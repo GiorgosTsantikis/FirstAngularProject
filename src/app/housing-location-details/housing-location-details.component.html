@@ -1,0 +1,46 @@
+<article class="listing-article">
+    <section class="listing-description">
+      <h2 class="listing-heading">{{housingLocation?.name}}</h2>
+      <p class="listing-location">{{housingLocation?.city}}, {{housingLocation?.state}}
+    </section>
+    <img class="listing-photo" [src]="housingLocation?.photo"/>
+
+    <section class="listing-features">
+      <h2 class="section-heading">About this location</h2>
+      <ul>
+        <li>Units available:{{housingLocation?.availableUnits}}</li>
+        <li>Wifi:{{housingLocation?.wifi}}</li>
+        <li>Laundry:{{housingLocation?.laundry}}</li>
+      </ul>
+    </section>
+    <section class="listing-apply">
+      <h2 class="selection-heading">Apply to live here</h2>
+      <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" class="apply-form">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          required
+          />
+          <div class="email-warn" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched ">
+            Please enter a valid email
+          </div>
+          <label for="firstName">First Name:</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            required
+            />
+            <label for="lastName">Last Name:</label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              required
+              />
+          <button type="submit" [disabled]="applyForm.invalid">Sign up</button>
+      </form>
+    </section>
+  </article>
