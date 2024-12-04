@@ -14,12 +14,10 @@
     display: inline-block;
     width: 30%;
   }
-  button {
-    padding: 10px;
-    border: solid 1px var(--primary-color);
-    background: var(--primary-color);
-    color: white;
-    border-radius: 8px;
+  
+
+  .create-listing-btn{
+    background-color: rgb(126, 71, 189);
   }
   @media (min-width: 500px) and (max-width: 768px) {
     .results {

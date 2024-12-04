@@ -6,5 +6,7 @@ export default interface HousingLocationData{
     state:string,
     availableUnits:number,
     wifi:boolean,
-    laundry:boolean
+    laundry:boolean,
+    price:number,
+    rooms:number
 }

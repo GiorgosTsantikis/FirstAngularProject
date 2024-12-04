@@ -1,0 +1,40 @@
+<p>apply-form works!</p>
+<form [formGroup]="applyForm" (ngSubmit)="onSubmit()" class="apply-form">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      required
+      />
+      <div class="email-warn" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched ">
+        Please enter a valid email
+      </div>
+      <label for="firstName">First Name:</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        required
+        />
+        <label for="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          required
+          />
+          <label for="phoneNum">Phone Number(with 3 digit country code):</label>
+          <input
+            type="text"
+            id="phoneNum"
+            formControlName="phoneNum"
+            required
+            />
+            <div class="email-warn" *ngIf="applyForm.get('phoneNum')?.invalid && applyForm.get('phoneNum')?.touched ">
+
+              Please enter a phone number in the form +030XXXXXXXXXX
+            </div>
+      <button type="submit" [disabled]="applyForm.invalid">Sign up</button>
+      <p>{{id}}  {{housingLocationId}}</p>
+  </form>

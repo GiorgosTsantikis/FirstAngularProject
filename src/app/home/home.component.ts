@@ -1,6 +1,7 @@
 import { Component ,inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HousingLocationComponent } from '../housing-location/housing-location.component';
 import HousingLocationData from '@models/housing-location-data.model';
 import { HousingService } from 'app/housing.service';
@@ -13,6 +14,8 @@ import { provideHttpClient } from '@angular/common/http';
     <section>
         <input type="text" id="city" [(ngModel)]="city" 
         (ngModelChange)="onCityChange()"placeholder="Filter By City">
+
+        <button class="create-listing-btn" enable="true" (click)="createListing()" >Add Listing</button>
     </section>
     <section class="results">
       <app-housing-location 
@@ -32,11 +35,12 @@ export class HomeComponent {
     this.housingService.getAllHousingLocations().subscribe(
       (data:HousingLocationData[])=>{
         this.houseList=data;
+        console.log(data);
         this.filteredList=[...this.houseList];
       })
     
   }
-  constructor(){
+  constructor(private router:Router){
    
   }
 
@@ -45,6 +49,10 @@ export class HomeComponent {
     this.houseList.filter(x=>x.city.toLowerCase().includes(this.city.toLowerCase().trim()));
     console.log(this.filteredList," ",this.city);
     
+  }
+
+  createListing(){
+    this.router.navigate(['newlisting']);
   }
 
   

@@ -1,3 +1,5 @@
+
+/*
 .listing-article{
     display: grid;
     column-gap: 14px;
@@ -6,36 +8,102 @@
     grid-auto-rows:minmax(50px,auto);
     margin-top: 50px;
     justify-content: space-around;
+    max-height: 6vh;
 }
 .listing-article {
     display: grid;
-    grid-template-columns: 1fr; /* Single column for stacking items */
-    gap: 14px; /* Adds space between the items */
+    grid-template-columns: 1fr; 
+    gap: 14px; 
     margin-top: 50px;
-    justify-items: center; /* Ensure elements are centered horizontally */
+    justify-items: center; 
 }
 
 .listing-description {
-    text-align: center; /* Center the heading text */
+    text-align: center; 
 }
 
 .listing-photo {
-    max-width: 100%; /* Ensure the image fits the width of the container */
-    height: auto; /* Maintain the aspect ratio of the image */
+    max-width: 80%; 
+    height: auto; 
 }
 
 .listing-description {
-    margin-bottom: 14px; /* Add space below the description */
+    margin-bottom: 14px; 
 }
 
 .listing-features {
-    margin-bottom: 14px; /* Add space below the features */
+    margin-bottom: 14px; 
 }
 
 .listing-apply {
-    margin-top: 14px; /* Add space above the apply button */
+    margin-top: 14px; 
 }
 
 .apply-form{
     display: grid;
 }
+*/
+.listing-article {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  section {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  section:last-child {
+    border-bottom: none;
+  }
+
+.listing-heading {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .section-heading {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .price{
+    font-weight: bold;
+    color:#007bff;
+    white-space: nowrap;
+  }
+  
+  p, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-top: 10px;
+  }
+  
+  li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  .listing-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  

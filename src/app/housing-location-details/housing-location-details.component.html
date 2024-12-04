@@ -6,41 +6,50 @@
     <img class="listing-photo" [src]="housingLocation?.photo"/>
 
     <section class="listing-features">
-      <h2 class="section-heading">About this location</h2>
+      <h2 class="section-heading">About this location                       
+      <span class="price" *ngIf="housingLocation">
+        {{housingLocation.price|PricePipe}}
+      </span>
+    </h2>
+
       <ul>
         <li>Units available:{{housingLocation?.availableUnits}}</li>
+        <li>Rooms:{{housingLocation?.rooms}}</li>
         <li>Wifi:{{housingLocation?.wifi}}</li>
         <li>Laundry:{{housingLocation?.laundry}}</li>
+       
       </ul>
+      <button (click)="deleteListing()">Delete Listing</button>
     </section>
-    <section class="listing-apply">
+    <section class="listing-apply" *ngIf="!applicationSent">
       <h2 class="selection-heading">Apply to live here</h2>
-      <form [formGroup]="applyForm" (ngSubmit)="onSubmit()" class="apply-form">
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          required
-          />
-          <div class="email-warn" *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched ">
-            Please enter a valid email
-          </div>
-          <label for="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            formControlName="firstName"
-            required
-            />
-            <label for="lastName">Last Name:</label>
-            <input
-              type="text"
-              id="lastName"
-              formControlName="lastName"
-              required
-              />
-          <button type="submit" [disabled]="applyForm.invalid">Sign up</button>
-      </form>
+      
+      <button (click)="clickApply()">Apply</button>
+      <button (click)="editListing()">Edit Listing</button>
+      
+      <div *ngIf="apply">
+        <h2>Apply here:</h2>
+        <app-apply-form id={{housingLocationId}} (formEvent)="receiveApplication($event)"></app-apply-form>
+      </div>
+     
     </section>
+
+    <div *ngIf="applicationSent">
+      <p>Application sent successfully </p>
+      <p>
+        First Name: {{data.firstName}},
+        Last Name: {{data.lastName}},
+        Email: {{data.email}},
+        Phone Number: {{data.phoneNum}}
+      </p>
+      <button (click)="reset()">Reset</button>
+    </div>
+
+
+    <div *ngIf="editing">
+      <app-edit-listing-form [listing]="housingLocation" (listingUpdate)="updateListing($event)"></app-edit-listing-form>
+     
+    </div>
+
+
   </article>
